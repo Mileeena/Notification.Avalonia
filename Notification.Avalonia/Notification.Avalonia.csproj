@@ -1,20 +1,21 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>net8.0</TargetFramework>
+        <TargetFramework>netstandard2.1</TargetFramework>
+        <LangVersion>latest</LangVersion>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <LangVersion>preview</LangVersion>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-        <PackageProjectUrl>https://github.com/AvaloniaCommunity/Avalonia.Notification</PackageProjectUrl>
-        <PackageLicenseUrl>https://github.com/AvaloniaCommunity/Avalonia.Notification/blob/master/LICENSE</PackageLicenseUrl>
-        <RepositoryUrl>https://github.com/AvaloniaCommunity/Avalonia.Notification</RepositoryUrl>
+        <PackageProjectUrl>https://github.com/Mileeena/Notification.Avalonia/tree/master</PackageProjectUrl>
+        <PackageLicenseUrl>https://github.com/Mileeena/Notification.Avalonia/blob/master/LICENSE</PackageLicenseUrl>
+        <RepositoryUrl>https://github.com/Mileeena/Notification.Avalonia/tree/master</RepositoryUrl>
         <RepositoryType>git</RepositoryType>
-        <PackageId>Notification.Avalonia</PackageId>
-        <Title>Notification.Avalonia</Title>
+        <PackageId>Mileeena.Notification.Avalonia</PackageId>
+        <Title>Mileeena.Notification.Avalonia</Title>
         <Authors>Lary</Authors>
         <RootNamespace>Avalonia.Notification</RootNamespace>
-        <PackageVersion>2.1.0</PackageVersion>
+        <PackageVersion>2.1.1</PackageVersion>
     </PropertyGroup>
     <ItemGroup>
         <AvaloniaResource Include="**\*.xaml">

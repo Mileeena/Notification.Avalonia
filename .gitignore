@@ -1,4 +1,102 @@
 ﻿Notification.Avalonia/bin
 Notification.Avalonia/obj
-.idea
+
+# User-specific files
+*.suo
+*.iml
 *.user
+*.sln.docstates
+.nuget
+.idea
+.vs
+.settings
+.vscode
+appsettings.*.json
+_ReSharper.Caches
+
+# Build results
+build.properties
+[Dd]ebug/
+[Rr]elease/
+x64/
+build/
+obj/
+bin/
+Obj/
+Bin/
+logs/
+
+# MSTest test Results
+[Tt]est[Rr]esult*/
+[Bb]uild[Ll]og.*
+build-*/
+
+*_i.c
+*_p.c
+*.ilk
+*.meta
+*.obj
+*.pch
+*.pdb
+*.pgc
+*.pgd
+*.rsp
+*.sbr
+*.tlb
+*.tli
+*.tlh
+*.tmp
+*.tmp_proj
+*.log
+*.vspscc
+*.vssscc
+.builds
+*.pidb
+*.log
+*.scc
+
+# OS generated files #
+.DS_Store*
+ehthumbs.db
+Icon?
+Thumbs.db
+
+# DotCover is a Code Coverage Tool
+*.dotCover
+
+# NCrunch
+*.ncrunch*
+.*crunch*.local.xml
+
+# NuGet Packages Directory
+## TODO: If you have NuGet Package Restore enabled, uncomment the next line
+packages/
+
+# vim
+*.txt~
+*.swp
+*.swo
+
+*.nupkg
+*.dll
+*.exe
+*.userprefs
+*.Cache
+
+# Gradle
+.gradle
+
+# Node
+node_modules/
+
+# Bower
+bower_components/
+
+# Node
+node_modules/
+dist/
+vars/
+deployment/pgdata
+deployment/pgadmin
+*logs
+[Ll]og
