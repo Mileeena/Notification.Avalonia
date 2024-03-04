@@ -1,4 +1,5 @@
 ﻿using System.Collections.ObjectModel;
+using Avalonia.Layout;
 using Avalonia.Media;
 
 namespace Avalonia.Notification
@@ -104,6 +105,24 @@ namespace Avalonia.Notification
         /// </value>
         bool MessageVisibility { get; set; }
 
+        /// <summary>
+        /// Gets or sets the buttons visibility.
+        /// </summary>
+        /// <value>
+        /// The buttons visibility.
+        /// </value>
+        bool ButtonsVisibility { get; set; }
+        
+        /// <summary>
+        /// Gets or sets the close buttons visibility.
+        /// </summary>
+        /// <value>
+        /// The close buttons visibility.
+        /// </value>
+        bool CloseButtonVisibility { get; set; }
+        
+        VerticalAlignment CloseButtonVerticalAlignment { get; set; }
+        
         /// <summary>
         /// Gets or sets the content of the overlay.
         /// </summary>

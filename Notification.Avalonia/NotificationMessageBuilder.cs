@@ -1,4 +1,5 @@
-﻿using Avalonia.Media;
+﻿using Avalonia.Layout;
+using Avalonia.Media;
 
 namespace Avalonia.Notification;
 
@@ -60,7 +61,17 @@ public class NotificationMessageBuilder
         if (button == null)
             throw new ArgumentNullException(nameof(button));
 
+        this.Message.ButtonsVisibility = true;
         this.Message.Buttons.Add(button);
+    }
+    
+    /// <summary>
+    /// Adds the close button.
+    /// </summary>
+    public void AddCloseButton(VerticalAlignment verticalAlignment)
+    {
+        this.Message.CloseButtonVisibility = true;
+        this.Message.CloseButtonVerticalAlignment = verticalAlignment;
     }
 
     /// <summary>

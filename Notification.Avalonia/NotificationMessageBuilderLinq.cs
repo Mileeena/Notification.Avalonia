@@ -1,4 +1,5 @@
-﻿using Avalonia.Media;
+﻿using Avalonia.Layout;
+using Avalonia.Media;
 
 // ReSharper disable UnusedMember.Global
 // ReSharper disable RedundantEmptySwitchSection
@@ -221,6 +222,16 @@ public static class NotificationMessageBuilderLinq
 
         builder.AddButton(button);
 
+        return builder;
+    }    
+    
+    /// <summary>
+    /// Adds the close button to the notification message.
+    /// </summary>
+    public static NotificationMessageBuilder WithCloseButton(
+        this NotificationMessageBuilder builder, VerticalAlignment verticalAlignment = VerticalAlignment.Center)
+    {
+        builder.AddCloseButton(verticalAlignment);
         return builder;
     }
 

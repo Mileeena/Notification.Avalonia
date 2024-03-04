@@ -1,8 +1,10 @@
 ﻿using System.Collections.ObjectModel;
+using System.Windows.Input;
 using Avalonia.Animation;
 using Avalonia.Controls;
 using Avalonia.Controls.Presenters;
 using Avalonia.Controls.Primitives;
+using Avalonia.Layout;
 using Avalonia.Media;
 using Avalonia.Reactive;
 using Avalonia.Styling;
@@ -172,6 +174,7 @@ public class NotificationMessage : TemplatedControl, INotificationMessage, INoti
         get => (bool)GetValue(HeaderVisibilityProperty);
         set => SetValue(HeaderVisibilityProperty, value);
     }
+    
 
     /// <summary>
     /// Gets or sets the header.
@@ -242,6 +245,30 @@ public class NotificationMessage : TemplatedControl, INotificationMessage, INoti
         get => GetValue(StartAnimationProperty);
         set => SetValue(StartAnimationProperty, value);
     }
+    
+    /// <summary>
+    /// Gets or sets the buttons visibility.
+    /// </summary>
+    /// <value>
+    /// The buttons visibility.
+    /// </value>
+    public bool ButtonsVisibility
+    {
+        get => GetValue(ButtonsVisibilityProperty);
+        set => SetValue(ButtonsVisibilityProperty, value);
+    }
+
+    public bool CloseButtonVisibility
+    {
+        get => GetValue(CloseButtonVisibilityProperty);
+        set => SetValue(CloseButtonVisibilityProperty, value);
+    }
+    
+    public VerticalAlignment CloseButtonVerticalAlignment
+    {
+        get => GetValue(CloseButtonCloseButtonVerticalAlignmentProperty);
+        set => SetValue(CloseButtonCloseButtonVerticalAlignmentProperty, value);
+    }
 
 
     /// <summary>
@@ -251,6 +278,23 @@ public class NotificationMessage : TemplatedControl, INotificationMessage, INoti
     {
         get => GetValue(DismissAnimationProperty);
         set => SetValue(DismissAnimationProperty, value);
+    }
+    
+    public static readonly StyledProperty<ICommand> CloseCommandProperty =
+        AvaloniaProperty.Register<NotificationMessage, ICommand>(nameof(CloseCommand), new CloseCommand(CloseNotification));
+
+    private static void CloseNotification(object parameter)
+    {
+        if (parameter is NotificationMessage message)
+        {
+            message.IsVisible = false;
+        }
+    }
+
+    public ICommand CloseCommand
+    {
+        get => GetValue(CloseCommandProperty);
+        set => SetValue(CloseCommandProperty, value);
     }
 
 
@@ -398,6 +442,42 @@ public class NotificationMessage : TemplatedControl, INotificationMessage, INoti
 
         @this.HeaderVisibility = dependencyPropertyChangedEventArgs.NewValue != null;
     }
+    
+    /// <summary>
+    /// Buttons the property changes callback.
+    /// </summary>
+    /// <param name="dependencyObject">The dependency object.</param>
+    /// <param name="dependencyPropertyChangedEventArgs">The <see cref="dependencyPropertyChangedEventArgs" /> instance containing the event data.</param>
+    private static void ButtonsPropertyChangesCallback(AvaloniaObject dependencyObject, AvaloniaPropertyChangedEventArgs<ObservableCollection<object>> dependencyPropertyChangedEventArgs)
+    {
+        if (dependencyObject is not NotificationMessage @this)
+            throw new NullReferenceException("Dependency object is not of valid type " + nameof(NotificationMessage));
+
+        if (dependencyPropertyChangedEventArgs.NewValue.Value.Count > 0)
+        {
+            @this.ButtonsVisibility = true;
+        }
+
+        @this.ButtonsVisibility = false;
+    }
+    
+    /// <summary>
+    /// CloseButtons the property changes callback.
+    /// </summary>
+    /// <param name="dependencyObject">The dependency object.</param>
+    /// <param name="dependencyPropertyChangedEventArgs">The <see cref="dependencyPropertyChangedEventArgs" /> instance containing the event data.</param>
+    private static void CloseButtonPropertyChangesCallback(AvaloniaObject dependencyObject, AvaloniaPropertyChangedEventArgs<ObservableCollection<object>> dependencyPropertyChangedEventArgs)
+    {
+        if (dependencyObject is not NotificationMessage @this)
+            throw new NullReferenceException("Dependency object is not of valid type " + nameof(NotificationMessage));
+
+        if (dependencyPropertyChangedEventArgs.NewValue.Value.Count > 0)
+        {
+            @this.CloseButtonVisibility = true;
+        }
+
+        @this.CloseButtonVisibility = false;
+    }
 
     /// <summary>
     /// The message visibility property.
@@ -410,6 +490,24 @@ public class NotificationMessage : TemplatedControl, INotificationMessage, INoti
     /// </summary>
     public static readonly StyledProperty<string> MessageProperty =
         AvaloniaProperty.Register<NotificationMessage, string>("Message");
+    
+    /// <summary>
+    /// The buttons visibility property.
+    /// </summary>
+    public static readonly StyledProperty<bool> ButtonsVisibilityProperty =
+        AvaloniaProperty.Register<NotificationMessage, bool>("ButtonsVisibilityProperty");
+    
+    /// <summary>
+    /// The close buttons visibility property.
+    /// </summary>
+    public static readonly StyledProperty<bool> CloseButtonVisibilityProperty =
+        AvaloniaProperty.Register<NotificationMessage, bool>("CloseButtonVisibilityProperty");
+    
+    /// <summary>
+    /// The close buttons visibility property.
+    /// </summary>
+    public static readonly StyledProperty<VerticalAlignment> CloseButtonCloseButtonVerticalAlignmentProperty =
+        AvaloniaProperty.Register<NotificationMessage, VerticalAlignment>("CloseButtonCloseButtonVerticalAlignmentProperty");
 
     /// <summary>
     /// Messages the property changes callback.
